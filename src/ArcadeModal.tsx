@@ -37,6 +37,14 @@ const CSS = `
   to   { transform: translateX(240%) skewX(-18deg); }
 }
 
+/* The house curve, as a plain class rather than a Tailwind arbitrary value.
+   Spelling a cubic-bezier inline on the easing utility is ambiguous once the
+   host app loads a plugin that adds its own easing scale (tailwindcss-animate
+   does): Tailwind warns and then generates nothing at all, so the transition
+   silently falls back to the browser default. Four of them did.
+   Do not reintroduce that spelling — this comment is scanned as content too. */
+.arcade-ease  { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+
 .arcade-rise  { animation: arcade-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 .arcade-fade  { animation: arcade-fade 500ms ease-out both; }
 .arcade-orb   { animation: arcade-drift 18s ease-in-out infinite; }
@@ -260,7 +268,7 @@ export const ArcadeModal = ({ open, onClose, language }: ArcadeModalProps) => {
                           // one line no matter how long a description runs.
                           "arcade-tile arcade-rise group relative flex flex-row overflow-hidden rounded-2xl border text-left sm:flex-col sm:rounded-3xl",
                           "border-white/10 bg-white/[0.04] backdrop-blur-xl",
-                          "touch-manipulation transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                          "touch-manipulation transition-all duration-300 arcade-ease",
                           "focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b18]",
                           available
                             ? "cursor-pointer active:scale-[0.985] sm:hover:-translate-y-1.5 sm:hover:border-white/25 sm:hover:bg-white/[0.07] sm:hover:shadow-2xl sm:hover:shadow-black/50 sm:active:translate-y-0"
@@ -272,7 +280,7 @@ export const ArcadeModal = ({ open, onClose, language }: ArcadeModalProps) => {
                         <div className="relative w-28 flex-shrink-0 self-stretch overflow-hidden sm:aspect-[4/3] sm:w-full sm:self-auto">
                           <div
                             className={cn(
-                              "h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                              "h-full w-full transition-transform duration-500 arcade-ease",
                               available
                                 ? "group-hover:scale-[1.06]"
                                 : "scale-100 opacity-40 grayscale",
@@ -309,7 +317,7 @@ export const ArcadeModal = ({ open, onClose, language }: ArcadeModalProps) => {
                               <span
                                 className={cn(
                                   "inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r px-3.5 py-1.5 text-sm font-semibold text-slate-950 shadow-lg",
-                                  "transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:gap-2.5",
+                                  "transition-all duration-300 arcade-ease group-hover:gap-2.5",
                                   game.accent,
                                 )}
                               >

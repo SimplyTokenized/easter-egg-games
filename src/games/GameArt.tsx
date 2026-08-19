@@ -276,9 +276,105 @@ const LadderArt = () => {
   );
 };
 
+/**
+ * Space Invaders' cover is the moment the game is about: the fleet overhead,
+ * the cannon underneath, one shot in the air.
+ *
+ * The sprites are drawn here rather than imported from `games/invaders/sprites`
+ * on purpose — this file lives in the arcade chunk, and the game's art has no
+ * business loading for someone who only ever looks at the picker.
+ */
+const InvadersArt = () => {
+  /** Lit pixels as one path, runs merged along each row. */
+  const pixels = (rows: string[]): string => {
+    let path = "";
+    rows.forEach((row, y) => {
+      let x = 0;
+      while (x < row.length) {
+        if (row[x] !== "X") {
+          x += 1;
+          continue;
+        }
+        let run = 0;
+        while (x + run < row.length && row[x + run] === "X") run += 1;
+        path += `M${x} ${y}h${run}v1h${-run}z`;
+        x += run;
+      }
+    });
+    return path;
+  };
+
+  const crab = pixels([
+    "..X.....X..",
+    "...X...X...",
+    "..XXXXXXX..",
+    ".XX.XXX.XX.",
+    "XXXXXXXXXXX",
+    "X.XXXXXXX.X",
+    "X.X.....X.X",
+    "...XX.XX...",
+  ]);
+  const squid = pixels([
+    "...XX...",
+    "..XXXX..",
+    ".XXXXXX.",
+    "XX.XX.XX",
+    "XXXXXXXX",
+    "..X..X..",
+    ".X.XX.X.",
+    "X.X..X.X",
+  ]);
+  const cannon = pixels([
+    "......X......",
+    ".....XXX.....",
+    ".XXXXXXXXXXX.",
+    "XXXXXXXXXXXXX",
+    "XXXXXXXXXXXXX",
+    "XXX.......XXX",
+  ]);
+
+  const alien = (x: number, y: number, path: string, w: number, color: string) => (
+    <g key={`${x}-${y}`} transform={`translate(${x} ${y}) scale(2)`}>
+      <path d={path} fill={color} transform={`translate(${-w / 2} -4)`} />
+    </g>
+  );
+
+  return (
+    <Frame>
+      <rect width="200" height="150" fill="#020617" />
+      {/* A few stars, placed by hand so they never sit on a sprite. */}
+      {[
+        [18, 20],
+        [176, 30],
+        [40, 128],
+        [150, 118],
+        [96, 16],
+        [8, 92],
+      ].map(([cx, cy]) => (
+        <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.2" fill="#e2e8f0" opacity="0.55" />
+      ))}
+
+      {/* Two ranks of the fleet */}
+      {[46, 100, 154].map((x) => alien(x, 38, squid, 8, "#f9a8d4"))}
+      {[46, 100, 154].map((x) => alien(x, 64, crab, 11, "#67e8f9"))}
+
+      {/* The shot, mid-flight */}
+      <rect x="99" y="88" width="2" height="10" fill="#ffffff" />
+
+      {/* A bunker and the cannon */}
+      <rect x="60" y="108" width="24" height="10" rx="2" fill="#34d399" opacity="0.85" />
+      <rect x="116" y="108" width="24" height="10" rx="2" fill="#34d399" opacity="0.85" />
+      <g transform="translate(100 128) scale(2.2)">
+        <path d={cannon} fill="#e2e8f0" transform="translate(-6.5 -3)" />
+      </g>
+    </Frame>
+  );
+};
+
 const ART: Record<string, () => ReactElement> = {
   solitaire: SolitaireArt,
   ladder: LadderArt,
+  invaders: InvadersArt,
   snake: SnakeArt,
   memory: MemoryArt,
   "2048": PuzzleArt,

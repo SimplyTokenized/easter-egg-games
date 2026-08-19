@@ -59,6 +59,14 @@ export interface EasterEggStrings {
   paused: string;
   boardFull: string;
   snakeControls: string;
+  invadersName: string;
+  invadersDescription: string;
+  waveLabel: string;
+  livesLabel: string;
+  fire: string;
+  waveCleared: string;
+  invadersControls: string;
+  invadersTouch: string;
 }
 
 const en: EasterEggStrings = {
@@ -73,7 +81,8 @@ const en: EasterEggStrings = {
   backToArcade: "Back to the arcade",
   loadingGame: "Loading {game} …",
   solitaireName: "Solitaire",
-  solitaireDescription: "Klondike, the classic. Move every card home to the four aces.",
+  solitaireDescription:
+    "Klondike, the classic. Move every card home to the four aces.",
   snakeName: "Snake",
   snakeDescription: "Eat, grow, don't bite yourself.",
   memoryName: "Memory",
@@ -85,7 +94,8 @@ const en: EasterEggStrings = {
   moves: "Moves",
   time: "Time",
   autoFinish: "Auto-finish",
-  howToPlay: "Drag a card, or tap it and tap its destination. Double-tap sends it to the aces.",
+  howToPlay:
+    "Drag a card, or tap it and tap its destination. Double-tap sends it to the aces.",
   wonTitle: "You won!",
   wonSubtitle: "Every card is home. Time to head back to work — or not.",
   playAgain: "Play again",
@@ -94,7 +104,8 @@ const en: EasterEggStrings = {
   foundation: "Foundation",
   column: "Column",
   ladderName: "Ladder",
-  ladderDescription: "Climb past the rolling rocks. A tribute to the 1983 terminal classic.",
+  ladderDescription:
+    "Climb past the rolling rocks. A tribute to the 1983 terminal classic.",
   lads: "Lads",
   levelLabel: "Level",
   scoreLabel: "Score",
@@ -110,6 +121,15 @@ const en: EasterEggStrings = {
   paused: "Paused",
   boardFull: "The board is full — nothing left to eat!",
   snakeControls: "Point where you want to go · arrows or WASD · Space pauses",
+  invadersName: "Space Invaders",
+  invadersDescription:
+    "Hold the line against the descending fleet. One shot at a time.",
+  waveLabel: "Wave",
+  livesLabel: "Lives",
+  fire: "Fire",
+  waveCleared: "Wave cleared",
+  invadersControls: "Arrows or A/D to move · Space to fire",
+  invadersTouch: "Drag anywhere on the screen — the cannon follows and fires",
 };
 
 const de: EasterEggStrings = {
@@ -124,7 +144,8 @@ const de: EasterEggStrings = {
   backToArcade: "Zur Spielhalle",
   loadingGame: "{game} wird geladen …",
   solitaireName: "Solitär",
-  solitaireDescription: "Klondike, der Klassiker. Alle Karten auf die vier Ass-Stapel.",
+  solitaireDescription:
+    "Klondike, der Klassiker. Alle Karten auf die vier Ass-Stapel.",
   snakeName: "Snake",
   snakeDescription: "Fressen, wachsen, sich nicht selbst beißen.",
   memoryName: "Memory",
@@ -136,16 +157,19 @@ const de: EasterEggStrings = {
   moves: "Züge",
   time: "Zeit",
   autoFinish: "Auto-Finish",
-  howToPlay: "Karte ziehen — oder antippen und das Ziel antippen. Doppeltippen legt sie aufs Ass.",
+  howToPlay:
+    "Karte ziehen — oder antippen und das Ziel antippen. Doppeltippen legt sie aufs Ass.",
   wonTitle: "Gewonnen!",
-  wonSubtitle: "Alle Karten sind zu Hause. Zurück an die Arbeit — oder auch nicht.",
+  wonSubtitle:
+    "Alle Karten sind zu Hause. Zurück an die Arbeit — oder auch nicht.",
   playAgain: "Nochmal",
   stock: "Talon",
   waste: "Ablage",
   foundation: "Ass-Stapel",
   column: "Spalte",
   ladderName: "Ladder",
-  ladderDescription: "Hoch, vorbei an rollenden Steinen. Hommage an den Terminal-Klassiker von 1983.",
+  ladderDescription:
+    "Hoch, vorbei an rollenden Steinen. Hommage an den Terminal-Klassiker von 1983.",
   lads: "Leben",
   levelLabel: "Level",
   scoreLabel: "Punkte",
@@ -155,12 +179,23 @@ const de: EasterEggStrings = {
   gameOver: "Vorbei",
   levelCleared: "Level geschafft",
   allCleared: "Alle Level geschafft!",
-  ladderControls: "Pfeiltasten oder WASD zum Laufen und Klettern · Leertaste springt",
+  ladderControls:
+    "Pfeiltasten oder WASD zum Laufen und Klettern · Leertaste springt",
   lengthLabel: "Länge",
   bestLabel: "Bestwert",
   paused: "Pause",
   boardFull: "Das Feld ist voll — nichts mehr zu fressen!",
   snakeControls: "Zeig, wohin es gehen soll · Pfeiltasten oder WASD · Leertaste pausiert",
+  invadersName: "Space Invaders",
+  invadersDescription:
+    "Halte die Stellung gegen die absteigende Flotte. Immer nur ein Schuss.",
+  waveLabel: "Welle",
+  livesLabel: "Leben",
+  fire: "Feuer",
+  waveCleared: "Welle geschafft",
+  invadersControls: "Pfeiltasten oder A/D zum Bewegen · Leertaste schießt",
+  invadersTouch:
+    "Finger über den Bildschirm ziehen — die Kanone folgt und feuert",
 };
 
 const es: EasterEggStrings = {
@@ -175,7 +210,8 @@ const es: EasterEggStrings = {
   backToArcade: "Volver a la sala",
   loadingGame: "Cargando {game} …",
   solitaireName: "Solitario",
-  solitaireDescription: "Klondike, el clásico. Lleva todas las cartas a los cuatro ases.",
+  solitaireDescription:
+    "Klondike, el clásico. Lleva todas las cartas a los cuatro ases.",
   snakeName: "Snake",
   snakeDescription: "Come, crece y no te muerdas.",
   memoryName: "Memoria",
@@ -187,7 +223,8 @@ const es: EasterEggStrings = {
   moves: "Movimientos",
   time: "Tiempo",
   autoFinish: "Terminar solo",
-  howToPlay: "Arrastra una carta, o tócala y toca su destino. Doble toque para enviarla a los ases.",
+  howToPlay:
+    "Arrastra una carta, o tócala y toca su destino. Doble toque para enviarla a los ases.",
   wonTitle: "¡Has ganado!",
   wonSubtitle: "Todas las cartas en casa. Hora de volver al trabajo… o no.",
   playAgain: "Jugar otra vez",
@@ -196,7 +233,8 @@ const es: EasterEggStrings = {
   foundation: "Base",
   column: "Columna",
   ladderName: "Ladder",
-  ladderDescription: "Sube esquivando las rocas. Homenaje al clásico de terminal de 1983.",
+  ladderDescription:
+    "Sube esquivando las rocas. Homenaje al clásico de terminal de 1983.",
   lads: "Vidas",
   levelLabel: "Nivel",
   scoreLabel: "Puntos",
@@ -212,6 +250,15 @@ const es: EasterEggStrings = {
   paused: "En pausa",
   boardFull: "El tablero está lleno: ¡no queda nada por comer!",
   snakeControls: "Señala adónde quieres ir · flechas o WASD · Espacio pausa",
+  invadersName: "Space Invaders",
+  invadersDescription:
+    "Resiste ante la flota que desciende. Un disparo cada vez.",
+  waveLabel: "Oleada",
+  livesLabel: "Vidas",
+  fire: "Disparar",
+  waveCleared: "Oleada superada",
+  invadersControls: "Flechas o A/D para moverte · Espacio para disparar",
+  invadersTouch: "Arrastra por la pantalla: el cañón te sigue y dispara",
 };
 
 const fr: EasterEggStrings = {
@@ -226,7 +273,8 @@ const fr: EasterEggStrings = {
   backToArcade: "Retour à la salle",
   loadingGame: "Chargement de {game} …",
   solitaireName: "Solitaire",
-  solitaireDescription: "Klondike, le classique. Ramenez toutes les cartes sur les quatre as.",
+  solitaireDescription:
+    "Klondike, le classique. Ramenez toutes les cartes sur les quatre as.",
   snakeName: "Snake",
   snakeDescription: "Mangez, grandissez, ne vous mordez pas.",
   memoryName: "Memory",
@@ -238,7 +286,8 @@ const fr: EasterEggStrings = {
   moves: "Coups",
   time: "Temps",
   autoFinish: "Terminer auto",
-  howToPlay: "Faites glisser une carte, ou touchez-la puis sa destination. Double-clic pour l'envoyer sur les as.",
+  howToPlay:
+    "Faites glisser une carte, ou touchez-la puis sa destination. Double-clic pour l'envoyer sur les as.",
   wonTitle: "Gagné !",
   wonSubtitle: "Toutes les cartes sont rentrées. Retour au travail — ou pas.",
   playAgain: "Rejouer",
@@ -247,7 +296,8 @@ const fr: EasterEggStrings = {
   foundation: "Fondation",
   column: "Colonne",
   ladderName: "Ladder",
-  ladderDescription: "Grimpez en évitant les rochers. Hommage au classique terminal de 1983.",
+  ladderDescription:
+    "Grimpez en évitant les rochers. Hommage au classique terminal de 1983.",
   lads: "Vies",
   levelLabel: "Niveau",
   scoreLabel: "Score",
@@ -257,12 +307,22 @@ const fr: EasterEggStrings = {
   gameOver: "Partie terminée",
   levelCleared: "Niveau réussi",
   allCleared: "Tous les niveaux réussis !",
-  ladderControls: "Flèches ou WASD pour se déplacer et grimper · Espace pour sauter",
+  ladderControls:
+    "Flèches ou WASD pour se déplacer et grimper · Espace pour sauter",
   lengthLabel: "Longueur",
   bestLabel: "Record",
   paused: "En pause",
   boardFull: "Le plateau est plein — plus rien à manger !",
   snakeControls: "Montrez où aller · flèches ou WASD · Espace met en pause",
+  invadersName: "Space Invaders",
+  invadersDescription:
+    "Tenez la ligne face à la flotte qui descend. Un seul tir à la fois.",
+  waveLabel: "Vague",
+  livesLabel: "Vies",
+  fire: "Tirer",
+  waveCleared: "Vague terminée",
+  invadersControls: "Flèches ou A/D pour se déplacer · Espace pour tirer",
+  invadersTouch: "Faites glisser le doigt : le canon suit et tire",
 };
 
 const ar: EasterEggStrings = {
@@ -277,7 +337,8 @@ const ar: EasterEggStrings = {
   backToArcade: "العودة إلى الصالة",
   loadingGame: "جارٍ تحميل {game} …",
   solitaireName: "سوليتير",
-  solitaireDescription: "كلوندايك الكلاسيكية. انقل كل الأوراق إلى أكوام الآس الأربعة.",
+  solitaireDescription:
+    "كلوندايك الكلاسيكية. انقل كل الأوراق إلى أكوام الآس الأربعة.",
   snakeName: "الثعبان",
   snakeDescription: "كُل واكبر ولا تعضّ نفسك.",
   memoryName: "الذاكرة",
@@ -289,7 +350,8 @@ const ar: EasterEggStrings = {
   moves: "النقلات",
   time: "الوقت",
   autoFinish: "إنهاء تلقائي",
-  howToPlay: "اسحب ورقة، أو انقرها ثم انقر وجهتها. النقر المزدوج يرسلها إلى الآس.",
+  howToPlay:
+    "اسحب ورقة، أو انقرها ثم انقر وجهتها. النقر المزدوج يرسلها إلى الآس.",
   wonTitle: "لقد فزت!",
   wonSubtitle: "كل الأوراق وصلت. حان وقت العودة للعمل — أو لا.",
   playAgain: "العب مجدداً",
@@ -298,7 +360,8 @@ const ar: EasterEggStrings = {
   foundation: "الأساس",
   column: "العمود",
   ladderName: "السلّم",
-  ladderDescription: "اصعد متفادياً الصخور المتدحرجة. تحية لكلاسيكية الطرفية من عام 1983.",
+  ladderDescription:
+    "اصعد متفادياً الصخور المتدحرجة. تحية لكلاسيكية الطرفية من عام 1983.",
   lads: "أرواح",
   levelLabel: "المستوى",
   scoreLabel: "النقاط",
@@ -314,9 +377,23 @@ const ar: EasterEggStrings = {
   paused: "إيقاف مؤقت",
   boardFull: "امتلأت الرقعة — لم يبقَ ما يُؤكل!",
   snakeControls: "أشِر إلى وجهتك · الأسهم أو WASD · المسافة للإيقاف المؤقت",
+  invadersName: "غزاة الفضاء",
+  invadersDescription: "اصمد أمام الأسطول الهابط. طلقة واحدة في كل مرة.",
+  waveLabel: "الموجة",
+  livesLabel: "أرواح",
+  fire: "إطلاق",
+  waveCleared: "اكتملت الموجة",
+  invadersControls: "الأسهم أو A/D للحركة · المسافة لإطلاق النار",
+  invadersTouch: "اسحب إصبعك على الشاشة — يتبعك المدفع ويطلق النار",
 };
 
-const TABLE: Record<EasterEggLanguage, EasterEggStrings> = { en, de, es, fr, ar };
+const TABLE: Record<EasterEggLanguage, EasterEggStrings> = {
+  en,
+  de,
+  es,
+  fr,
+  ar,
+};
 
 const isSupported = (value: string): value is EasterEggLanguage =>
   (LANGUAGES as readonly string[]).includes(value);

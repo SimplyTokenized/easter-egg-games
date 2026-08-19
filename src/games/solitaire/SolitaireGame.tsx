@@ -148,7 +148,7 @@ const ToolbarButton = ({
     disabled={disabled}
     className={cn(
       "inline-flex min-h-[38px] items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium",
-      "touch-manipulation transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] active:scale-[0.96]",
+      "touch-manipulation transition-all duration-200 arcade-ease active:scale-[0.96]",
       "focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400",
       "disabled:cursor-not-allowed disabled:opacity-35",
       primary
