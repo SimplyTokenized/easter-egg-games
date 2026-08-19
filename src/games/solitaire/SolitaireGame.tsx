@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Clock, RotateCcw, Sparkles, Trophy, Undo2 } from "lucide-react";
 import { cn } from "../../lib/cn";
+import { ARCADE_OVERLAY_Z_INDEX } from "../../lib/layers";
 import type { GameProps } from "../registry";
 import {
   autoCompleteStep,
@@ -258,10 +259,20 @@ export const SolitaireGame = ({ strings }: GameProps) => {
     void import("canvas-confetti")
       .then(({ default: confetti }) => {
         if (cancelled) return;
-        confetti({ particleCount: 140, spread: 78, origin: { y: 0.62 } });
+        confetti({
+          particleCount: 140,
+          spread: 78,
+          origin: { y: 0.62 },
+          zIndex: ARCADE_OVERLAY_Z_INDEX,
+        });
         secondBurst = window.setTimeout(() => {
           if (cancelled) return;
-          confetti({ particleCount: 90, spread: 110, origin: { y: 0.5 } });
+          confetti({
+            particleCount: 90,
+            spread: 110,
+            origin: { y: 0.5 },
+            zIndex: ARCADE_OVERLAY_Z_INDEX,
+          });
         }, 340);
       })
       .catch(() => {

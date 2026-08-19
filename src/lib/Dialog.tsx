@@ -13,6 +13,11 @@ import { cn } from "./cn";
  *
  * Focus trapping, scroll locking, Esc-to-close, `aria-modal` and returning focus
  * to the logo on close all come from Radix.
+ *
+ * The `z-[2147483000]` below is `ARCADE_Z_INDEX` from `./layers`, spelled out as
+ * a literal because the host app compiles these classes by scanning the built
+ * `dist` for class names — a computed one would never be generated. Change both
+ * together.
  */
 export const Dialog = RadixDialog.Root;
 export const DialogTitle = RadixDialog.Title;
@@ -39,7 +44,7 @@ export const DialogFullScreenContent = ({
   <RadixDialog.Portal>
     <RadixDialog.Overlay
       className={cn(
-        "arcade-overlay fixed inset-0 z-50 bg-black/70 backdrop-blur-md",
+        "arcade-overlay fixed inset-0 z-[2147483000] bg-black/70 backdrop-blur-md",
         overlayClassName,
       )}
     />
@@ -48,7 +53,7 @@ export const DialogFullScreenContent = ({
       // keeps Radix from warning about the missing `aria-describedby` there.
       aria-describedby={undefined}
       className={cn(
-        "arcade-content fixed inset-0 z-50 h-[100dvh] w-screen overflow-hidden",
+        "arcade-content fixed inset-0 z-[2147483000] h-[100dvh] w-screen overflow-hidden",
         "bg-[#070b18] text-slate-100 outline-none",
         className,
       )}
