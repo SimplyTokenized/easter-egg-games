@@ -25,10 +25,6 @@ export interface EasterEggStrings {
   solitaireDescription: string;
   snakeName: string;
   snakeDescription: string;
-  memoryName: string;
-  memoryDescription: string;
-  puzzleName: string;
-  puzzleDescription: string;
   newGame: string;
   undo: string;
   moves: string;
@@ -89,10 +85,6 @@ const en: EasterEggStrings = {
     "Klondike, the classic. Move every card home to the four aces.",
   snakeName: "Snake",
   snakeDescription: "Eat, grow, don't bite yourself.",
-  memoryName: "Memory",
-  memoryDescription: "Find the matching pairs.",
-  puzzleName: "2048",
-  puzzleDescription: "Slide the tiles, chase the big number.",
   newGame: "New game",
   undo: "Undo",
   moves: "Moves",
@@ -156,10 +148,6 @@ const de: EasterEggStrings = {
     "Klondike, der Klassiker. Alle Karten auf die vier Ass-Stapel.",
   snakeName: "Snake",
   snakeDescription: "Fressen, wachsen, sich nicht selbst beißen.",
-  memoryName: "Memory",
-  memoryDescription: "Finde die passenden Paare.",
-  puzzleName: "2048",
-  puzzleDescription: "Kacheln schieben, große Zahl jagen.",
   newGame: "Neues Spiel",
   undo: "Rückgängig",
   moves: "Züge",
@@ -226,10 +214,6 @@ const es: EasterEggStrings = {
     "Klondike, el clásico. Lleva todas las cartas a los cuatro ases.",
   snakeName: "Snake",
   snakeDescription: "Come, crece y no te muerdas.",
-  memoryName: "Memoria",
-  memoryDescription: "Encuentra las parejas.",
-  puzzleName: "2048",
-  puzzleDescription: "Desliza las fichas y busca el número grande.",
   newGame: "Nueva partida",
   undo: "Deshacer",
   moves: "Movimientos",
@@ -293,10 +277,6 @@ const fr: EasterEggStrings = {
     "Klondike, le classique. Ramenez toutes les cartes sur les quatre as.",
   snakeName: "Snake",
   snakeDescription: "Mangez, grandissez, ne vous mordez pas.",
-  memoryName: "Memory",
-  memoryDescription: "Retrouvez les paires.",
-  puzzleName: "2048",
-  puzzleDescription: "Faites glisser les tuiles, visez le gros nombre.",
   newGame: "Nouvelle partie",
   undo: "Annuler",
   moves: "Coups",
@@ -361,10 +341,6 @@ const ar: EasterEggStrings = {
     "كلوندايك الكلاسيكية. انقل كل الأوراق إلى أكوام الآس الأربعة.",
   snakeName: "الثعبان",
   snakeDescription: "كُل واكبر ولا تعضّ نفسك.",
-  memoryName: "الذاكرة",
-  memoryDescription: "اعثر على الأزواج المتطابقة.",
-  puzzleName: "2048",
-  puzzleDescription: "حرّك المربعات واسعَ إلى الرقم الكبير.",
   newGame: "لعبة جديدة",
   undo: "تراجع",
   moves: "النقلات",

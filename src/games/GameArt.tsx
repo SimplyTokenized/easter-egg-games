@@ -142,89 +142,6 @@ const SnakeArt = () => {
   );
 };
 
-const MemoryArt = () => {
-  const tiles = [
-    { x: 62, y: 40, up: true, symbol: "★", fill: "#fbbf24" },
-    { x: 100, y: 40, up: false },
-    { x: 138, y: 40, up: false },
-    { x: 62, y: 100, up: false },
-    { x: 100, y: 100, up: true, symbol: "★", fill: "#fbbf24" },
-    { x: 138, y: 100, up: false },
-  ];
-  return (
-    <Frame>
-      <rect width="200" height="150" fill="#3b0764" />
-      <ellipse cx="100" cy="75" rx="110" ry="80" fill="#a855f7" opacity="0.28" />
-      {tiles.map((tile, i) => (
-        <g key={i} transform={`translate(${tile.x} ${tile.y})`}>
-          <rect
-            x="-21"
-            y="-24"
-            width="42"
-            height="48"
-            rx="7"
-            fill={tile.up ? "#ffffff" : "#6d28d9"}
-            stroke="#ffffff"
-            strokeOpacity={tile.up ? 0 : 0.22}
-            strokeWidth="1.5"
-          />
-          {tile.up ? (
-            <text
-              x="0"
-              y="10"
-              fontSize="26"
-              textAnchor="middle"
-              fill={tile.fill}
-            >
-              {tile.symbol}
-            </text>
-          ) : (
-            <circle cx="0" cy="0" r="9" fill="#ffffff" opacity="0.16" />
-          )}
-        </g>
-      ))}
-    </Frame>
-  );
-};
-
-const PuzzleArt = () => {
-  const tiles = [
-    { x: 64, y: 42, value: "2", bg: "#fde68a", fg: "#78350f" },
-    { x: 126, y: 42, value: "4", bg: "#fcd34d", fg: "#78350f" },
-    { x: 64, y: 104, value: "8", bg: "#fb923c", fg: "#ffffff" },
-    { x: 126, y: 104, value: "16", bg: "#f97316", fg: "#ffffff" },
-  ];
-  return (
-    <Frame>
-      <rect width="200" height="150" fill="#7c2d12" />
-      <rect
-        x="20"
-        y="8"
-        width="160"
-        height="134"
-        rx="12"
-        fill="#000000"
-        opacity="0.22"
-      />
-      {tiles.map((tile) => (
-        <g key={tile.value} transform={`translate(${tile.x} ${tile.y})`}>
-          <rect x="-26" y="-26" width="52" height="52" rx="9" fill={tile.bg} />
-          <text
-            x="0"
-            y="10"
-            fontSize={tile.value.length > 1 ? 24 : 28}
-            fontWeight="800"
-            textAnchor="middle"
-            fill={tile.fg}
-          >
-            {tile.value}
-          </text>
-        </g>
-      ))}
-    </Frame>
-  );
-};
-
 /**
  * Ladder's cover is the game itself: phosphor characters on black, the way it
  * looked on a Kaypro. Kept inside the central safe area so the phone thumbnail,
@@ -420,8 +337,6 @@ const ART: Record<string, () => ReactElement> = {
   invaders: InvadersArt,
   pacman: PacmanArt,
   snake: SnakeArt,
-  memory: MemoryArt,
-  "2048": PuzzleArt,
 };
 
 export const GameArt = ({ gameId }: { gameId: string }) => {
