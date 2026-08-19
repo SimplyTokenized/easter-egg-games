@@ -58,6 +58,11 @@ export interface EasterEggStrings {
   levelCleared: string;
   allCleared: string;
   ladderControls: string;
+  lengthLabel: string;
+  bestLabel: string;
+  paused: string;
+  boardFull: string;
+  snakeControls: string;
   invadersName: string;
   invadersDescription: string;
   waveLabel: string;
@@ -115,6 +120,11 @@ const en: EasterEggStrings = {
   levelCleared: "Level cleared",
   allCleared: "All levels cleared!",
   ladderControls: "Arrows or WASD to move and climb · Space to jump",
+  lengthLabel: "Length",
+  bestLabel: "Best",
+  paused: "Paused",
+  boardFull: "The board is full — nothing left to eat!",
+  snakeControls: "Point where you want to go · arrows or WASD · Space pauses",
   invadersName: "Space Invaders",
   invadersDescription:
     "Hold the line against the descending fleet. One shot at a time.",
@@ -179,6 +189,11 @@ const de: EasterEggStrings = {
   allCleared: "Alle Level geschafft!",
   ladderControls:
     "Pfeiltasten oder WASD zum Laufen und Klettern · Leertaste springt",
+  lengthLabel: "Länge",
+  bestLabel: "Bestwert",
+  paused: "Pause",
+  boardFull: "Das Feld ist voll — nichts mehr zu fressen!",
+  snakeControls: "Zeig, wohin es gehen soll · Pfeiltasten oder WASD · Leertaste pausiert",
   invadersName: "Space Invaders",
   invadersDescription:
     "Halte die Stellung gegen die absteigende Flotte. Immer nur ein Schuss.",
@@ -242,6 +257,11 @@ const es: EasterEggStrings = {
   levelCleared: "Nivel superado",
   allCleared: "¡Todos los niveles superados!",
   ladderControls: "Flechas o WASD para moverte y trepar · Espacio para saltar",
+  lengthLabel: "Longitud",
+  bestLabel: "Mejor",
+  paused: "En pausa",
+  boardFull: "El tablero está lleno: ¡no queda nada por comer!",
+  snakeControls: "Señala adónde quieres ir · flechas o WASD · Espacio pausa",
   invadersName: "Space Invaders",
   invadersDescription:
     "Resiste ante la flota que desciende. Un disparo cada vez.",
@@ -305,6 +325,11 @@ const fr: EasterEggStrings = {
   allCleared: "Tous les niveaux réussis !",
   ladderControls:
     "Flèches ou WASD pour se déplacer et grimper · Espace pour sauter",
+  lengthLabel: "Longueur",
+  bestLabel: "Record",
+  paused: "En pause",
+  boardFull: "Le plateau est plein — plus rien à manger !",
+  snakeControls: "Montrez où aller · flèches ou WASD · Espace met en pause",
   invadersName: "Space Invaders",
   invadersDescription:
     "Tenez la ligne face à la flotte qui descend. Un seul tir à la fois.",
@@ -367,6 +392,11 @@ const ar: EasterEggStrings = {
   levelCleared: "اكتمل المستوى",
   allCleared: "تم إنجاز كل المستويات!",
   ladderControls: "الأسهم أو WASD للحركة والتسلق · المسافة للقفز",
+  lengthLabel: "الطول",
+  bestLabel: "الأفضل",
+  paused: "إيقاف مؤقت",
+  boardFull: "امتلأت الرقعة — لم يبقَ ما يُؤكل!",
+  snakeControls: "أشِر إلى وجهتك · الأسهم أو WASD · المسافة للإيقاف المؤقت",
   invadersName: "غزاة الفضاء",
   invadersDescription: "اصمد أمام الأسطول الهابط. طلقة واحدة في كل مرة.",
   waveLabel: "الموجة",
