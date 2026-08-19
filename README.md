@@ -1,9 +1,9 @@
 # @simplytokenized/easter-egg-games
 
 A hidden arcade for a web app. Click the host application's logo **six times**
-(within ~1.2 s between clicks) and a full-screen arcade opens. Two games are
-playable: Klondike **Solitaire** and **Ladder**, a tribute to the 1983
-character-mode platformer.
+(within ~1.2 s between clicks) and a full-screen arcade opens. Three games are
+playable: Klondike **Solitaire**, **Ladder** — a tribute to the 1983
+character-mode platformer — and **Space Invaders**.
 
 The package exists as its own module for one reason: an easter egg must be
 impossible to feel. Keeping it out of the host repository makes "does this cost
@@ -117,7 +117,7 @@ Without it, a failed chunk simply propagates to the nearest error boundary.
 ```bash
 npm install
 npm run dev        # standalone playground on :5180 — a fake header, one logo
-npm test           # 70 unit tests, no browser needed
+npm test           # 116 unit tests, no browser needed
 npm run build      # dist/ — ES modules, one file per source module
 npm run typecheck
 ```
@@ -156,7 +156,12 @@ src/
       engine.ts            grid physics, rocks, scoring
       levels.ts            the five stages, as geometry
       LadderGame.tsx       terminal screen + input            ← own chunk
-tests/                     one suite per engine, plus a LadderGame component test
+    invaders/
+      engine.ts            fleet, shots, bunkers, waves
+      sprites.ts           pixel bitmaps → one path each
+      InvadersGame.tsx     the field + input                  ← own chunk
+tests/                     one suite per engine, plus component tests for
+                           Ladder and Space Invaders
 dev/                       the standalone playground
 ```
 
@@ -168,6 +173,11 @@ Keyboard: `⌘Z` undoes, `N` deals a new game, `Esc` closes the arcade.
 
 **Ladder** — arrows or `WASD` to move and climb, `Space` to jump. On touch
 devices an on-screen pad appears (`@media (pointer: coarse)`).
+
+**Space Invaders** — arrows or `A`/`D` to move, `Space` to fire. Holding fire is
+enough: only one shot is ever in the air. On a touch screen, drag anywhere on
+the field and the cannon follows your finger and fires by itself; the arrow pad
+is there too for anyone who prefers thumbs.
 
 ## Ladder
 
@@ -201,6 +211,49 @@ Two things worth knowing before editing it:
   React must never set it there. Two writers for one property has caused three
   separate bugs here — cards snapping at the end of a move, a card stuck behind
   its own pile, and the player parked in the top-left corner.
+
+## Space Invaders
+
+Endless waves: clear the fleet and the next one starts lower and marches faster.
+Shots and bunkers behave the way the cabinet's did — one shot in the air at a
+time, bunkers that erode from both sides and are ground away by the fleet
+passing over them, and a fleet that ends the game outright if it lands.
+
+As with Ladder, the implementation is our own. The genre and its mechanics are
+free to reuse; Taito's artwork and ROM data are not, so every sprite in
+`sprites.ts` is drawn here.
+
+Worth knowing before editing it:
+
+- **Nothing is interpolated between ticks.** Ladder needs interpolation because
+  it ticks at 95 ms; this ticks at 33 ms, and — more to the point — the fleet is
+  *supposed* to jump. Invaders hold still and then move `STEP_X` at once, which
+  is what makes a march look like a march. Only the cannon and the shots move
+  every tick, and at 30 Hz they need no help.
+- **The fleet marches on its own clock.** `stepInterval` returns ticks per
+  march, from the number of invaders left and the wave, so the fleet speeds up
+  as you shoot it down. That acceleration is the whole difficulty curve; it is
+  not a rendering effect.
+- **Randomness lives in the state.** Bombs pick a column at random, so the seed
+  is a field of `InvadersState` and `step` advances it. `step` stays pure — the
+  same state and the same keys always give the same next state — which is what
+  makes the bombing testable and a replay reproducible.
+- **The fleet and the bunkers are memoised.** Fifty-five sprites and ninety-six
+  bunker blocks must not re-render thirty times a second, so `Fleet` and
+  `Bunkers` are `memo`ised and the engine returns the *same* shield objects when
+  nothing hit them. Copying a shield on every tick would quietly undo that.
+- **Touch steering is absolute, the keys are relative.** Chasing an invader with
+  two arrow buttons is the worst part of every phone port of this game, so a
+  finger on the field sets a target column and the per-tick input is derived
+  from where the cannon actually is. The engine never learns about pointers.
+- **The screen is measured, not stretched.** The field is letterboxed to its
+  4:3, because the sprites are pixel art and a field that is not the shape its
+  units describe makes the invaders tall on a phone and squat on a desktop.
+  `aspect-ratio` alone will not do it: inside a flex row a `width: auto` item
+  takes the line's width, which is the stretch it was supposed to prevent.
+- **Sprites are bitmaps, not paths.** `sprites.ts` holds character art you can
+  edit by looking at it; `spritePath` merges each row's lit pixels into one
+  `<path>` at module load, so an invader costs one DOM node rather than eighty.
 
 ## Design notes
 
