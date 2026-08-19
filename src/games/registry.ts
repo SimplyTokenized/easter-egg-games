@@ -43,6 +43,7 @@ export const GAMES: GameDefinition[] = [
     nameKey: "snakeName",
     descriptionKey: "snakeDescription",
     accent: "from-lime-400 to-green-500",
+    component: lazyWithRetry(() => import("./snake/SnakeGame")),
   },
   {
     id: "memory",

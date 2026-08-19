@@ -54,6 +54,11 @@ export interface EasterEggStrings {
   levelCleared: string;
   allCleared: string;
   ladderControls: string;
+  lengthLabel: string;
+  bestLabel: string;
+  paused: string;
+  boardFull: string;
+  snakeControls: string;
 }
 
 const en: EasterEggStrings = {
@@ -100,6 +105,11 @@ const en: EasterEggStrings = {
   levelCleared: "Level cleared",
   allCleared: "All levels cleared!",
   ladderControls: "Arrows or WASD to move and climb · Space to jump",
+  lengthLabel: "Length",
+  bestLabel: "Best",
+  paused: "Paused",
+  boardFull: "The board is full — nothing left to eat!",
+  snakeControls: "Point where you want to go · arrows or WASD · Space pauses",
 };
 
 const de: EasterEggStrings = {
@@ -146,6 +156,11 @@ const de: EasterEggStrings = {
   levelCleared: "Level geschafft",
   allCleared: "Alle Level geschafft!",
   ladderControls: "Pfeiltasten oder WASD zum Laufen und Klettern · Leertaste springt",
+  lengthLabel: "Länge",
+  bestLabel: "Bestwert",
+  paused: "Pause",
+  boardFull: "Das Feld ist voll — nichts mehr zu fressen!",
+  snakeControls: "Zeig, wohin es gehen soll · Pfeiltasten oder WASD · Leertaste pausiert",
 };
 
 const es: EasterEggStrings = {
@@ -192,6 +207,11 @@ const es: EasterEggStrings = {
   levelCleared: "Nivel superado",
   allCleared: "¡Todos los niveles superados!",
   ladderControls: "Flechas o WASD para moverte y trepar · Espacio para saltar",
+  lengthLabel: "Longitud",
+  bestLabel: "Mejor",
+  paused: "En pausa",
+  boardFull: "El tablero está lleno: ¡no queda nada por comer!",
+  snakeControls: "Señala adónde quieres ir · flechas o WASD · Espacio pausa",
 };
 
 const fr: EasterEggStrings = {
@@ -238,6 +258,11 @@ const fr: EasterEggStrings = {
   levelCleared: "Niveau réussi",
   allCleared: "Tous les niveaux réussis !",
   ladderControls: "Flèches ou WASD pour se déplacer et grimper · Espace pour sauter",
+  lengthLabel: "Longueur",
+  bestLabel: "Record",
+  paused: "En pause",
+  boardFull: "Le plateau est plein — plus rien à manger !",
+  snakeControls: "Montrez où aller · flèches ou WASD · Espace met en pause",
 };
 
 const ar: EasterEggStrings = {
@@ -284,6 +309,11 @@ const ar: EasterEggStrings = {
   levelCleared: "اكتمل المستوى",
   allCleared: "تم إنجاز كل المستويات!",
   ladderControls: "الأسهم أو WASD للحركة والتسلق · المسافة للقفز",
+  lengthLabel: "الطول",
+  bestLabel: "الأفضل",
+  paused: "إيقاف مؤقت",
+  boardFull: "امتلأت الرقعة — لم يبقَ ما يُؤكل!",
+  snakeControls: "أشِر إلى وجهتك · الأسهم أو WASD · المسافة للإيقاف المؤقت",
 };
 
 const TABLE: Record<EasterEggLanguage, EasterEggStrings> = { en, de, es, fr, ar };

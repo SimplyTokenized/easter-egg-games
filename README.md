@@ -1,9 +1,9 @@
 # @simplytokenized/easter-egg-games
 
 A hidden arcade for a web app. Click the host application's logo **six times**
-(within ~1.2 s between clicks) and a full-screen arcade opens. Two games are
-playable: Klondike **Solitaire** and **Ladder**, a tribute to the 1983
-character-mode platformer.
+(within ~1.2 s between clicks) and a full-screen arcade opens. Three games are
+playable: Klondike **Solitaire**, **Ladder** — a tribute to the 1983
+character-mode platformer — and **Snake**.
 
 The package exists as its own module for one reason: an easter egg must be
 impossible to feel. Keeping it out of the host repository makes "does this cost
@@ -156,7 +156,10 @@ src/
       engine.ts            grid physics, rocks, scoring
       levels.ts            the five stages, as geometry
       LadderGame.tsx       terminal screen + input            ← own chunk
-tests/                     one suite per engine, plus a LadderGame component test
+    snake/
+      engine.ts            grid rules, growth, collisions, aiming
+      SnakeGame.tsx        measured board + pointer input     ← own chunk
+tests/                     one suite per engine, plus component tests
 dev/                       the standalone playground
 ```
 
@@ -168,6 +171,17 @@ Keyboard: `⌘Z` undoes, `N` deals a new game, `Esc` closes the arcade.
 
 **Ladder** — arrows or `WASD` to move and climb, `Space` to jump. On touch
 devices an on-screen pad appears (`@media (pointer: coarse)`).
+
+**Snake** — point where you want to go and the snake heads there: touch or
+cursor, no on-screen pad. Arrows or `WASD` steer too, and whichever was used
+last is the one in charge. `Space` pauses, as does losing window focus. Walls and
+your own body are fatal; each apple lengthens the snake and shortens the clock,
+down to a floor of 70 ms per step.
+
+The board is measured, not fixed: the grid is derived from the space the arcade
+gives it, so the play area fills a portrait phone and a laptop alike instead of
+letterboxing one shape onto both. A new grid is only adopted between runs —
+moving the walls while the snake is running at them would not be a kindness.
 
 ## Ladder
 
@@ -258,4 +272,4 @@ with no movement.
    `component: lazyWithRetry(() => import("./<id>/YourGame"))`.
 
 Entries without a `component` render as a disabled "coming soon" tile — that is
-what Snake, Memory and 2048 currently are.
+what Memory and 2048 currently are.
