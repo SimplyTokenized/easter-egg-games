@@ -44,6 +44,10 @@ export interface EasterEggStrings {
   column: string;
   ladderName: string;
   ladderDescription: string;
+  pacmanName: string;
+  pacmanDescription: string;
+  pacmanControls: string;
+  pacmanTouchControls: string;
   lads: string;
   levelLabel: string;
   scoreLabel: string;
@@ -120,6 +124,10 @@ const en: EasterEggStrings = {
   waveCleared: "Wave cleared",
   invadersControls: "Arrows or A/D to move · Space to fire",
   invadersTouch: "Drag anywhere on the screen — the cannon follows and fires",
+  pacmanName: "Pac-Man",
+  pacmanDescription: "Clear the maze, dodge four ghosts, and turn the tables on a power pellet.",
+  pacmanControls: "Arrows or WASD to steer · a turn is held until the corner comes",
+  pacmanTouchControls: "Swipe the maze to steer · a turn is held until the corner comes",
 };
 
 const de: EasterEggStrings = {
@@ -181,6 +189,10 @@ const de: EasterEggStrings = {
   invadersControls: "Pfeiltasten oder A/D zum Bewegen · Leertaste schießt",
   invadersTouch:
     "Finger über den Bildschirm ziehen — die Kanone folgt und feuert",
+  pacmanName: "Pac-Man",
+  pacmanDescription: "Räume das Labyrinth leer, weiche vier Geistern aus — und dreh mit einer Kraftpille den Spieß um.",
+  pacmanControls: "Pfeiltasten oder WASD zum Steuern · die Richtung wird bis zur Kurve gemerkt",
+  pacmanTouchControls: "Zum Steuern über das Labyrinth wischen · die Richtung wird bis zur Kurve gemerkt",
 };
 
 const es: EasterEggStrings = {
@@ -239,6 +251,10 @@ const es: EasterEggStrings = {
   waveCleared: "Oleada superada",
   invadersControls: "Flechas o A/D para moverte · Espacio para disparar",
   invadersTouch: "Arrastra por la pantalla: el cañón te sigue y dispara",
+  pacmanName: "Pac-Man",
+  pacmanDescription: "Vacía el laberinto, esquiva a cuatro fantasmas y dale la vuelta con una píldora de poder.",
+  pacmanControls: "Flechas o WASD para girar · el giro se guarda hasta la esquina",
+  pacmanTouchControls: "Desliza el dedo por el laberinto para girar · el giro se guarda hasta la esquina",
 };
 
 const fr: EasterEggStrings = {
@@ -298,6 +314,10 @@ const fr: EasterEggStrings = {
   waveCleared: "Vague terminée",
   invadersControls: "Flèches ou A/D pour se déplacer · Espace pour tirer",
   invadersTouch: "Faites glisser le doigt : le canon suit et tire",
+  pacmanName: "Pac-Man",
+  pacmanDescription: "Videz le labyrinthe, esquivez quatre fantômes et renversez la situation avec une super-pastille.",
+  pacmanControls: "Flèches ou WASD pour diriger · le virage est gardé jusqu'au tournant",
+  pacmanTouchControls: "Balayez le labyrinthe pour diriger · le virage est gardé jusqu'au tournant",
 };
 
 const ar: EasterEggStrings = {
@@ -355,6 +375,10 @@ const ar: EasterEggStrings = {
   waveCleared: "اكتملت الموجة",
   invadersControls: "الأسهم أو A/D للحركة · المسافة لإطلاق النار",
   invadersTouch: "اسحب إصبعك على الشاشة — يتبعك المدفع ويطلق النار",
+  pacmanName: "باك مان",
+  pacmanDescription: "أفرغ المتاهة، وتفادَ الأشباح الأربعة، واقلب الموازين بحبة الطاقة.",
+  pacmanControls: "الأسهم أو WASD للتوجيه · يُحفظ الاتجاه حتى المنعطف",
+  pacmanTouchControls: "اسحب إصبعك على المتاهة للتوجيه · يُحفظ الاتجاه حتى المنعطف",
 };
 
 const TABLE: Record<EasterEggLanguage, EasterEggStrings> = {

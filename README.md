@@ -1,9 +1,9 @@
 # @simplytokenized/easter-egg-games
 
 A hidden arcade for a web app. Click the host application's logo **six times**
-(within ~1.2 s between clicks) and a full-screen arcade opens. Three games are
+(within ~1.2 s between clicks) and a full-screen arcade opens. Four games are
 playable: Klondike **Solitaire**, **Ladder** — a tribute to the 1983
-character-mode platformer — and **Space Invaders**.
+character-mode platformer — **Space Invaders** and **Pac-Man**.
 
 The package exists as its own module for one reason: an easter egg must be
 impossible to feel. Keeping it out of the host repository makes "does this cost
@@ -22,7 +22,7 @@ finds the egg:
 | `EasterEggArcade.js` | 0.29 kB | the lazy boundary |
 | `lib/lazy.js` | 0.24 kB | `React.lazy` + the host's chunk-failure hook |
 
-Everything else — the modal, both games, the beach animation, all five
+Everything else — the modal, every game, the beach animation, all five
 translations, `canvas-confetti` — sits behind `import()`. Concretely:
 
 - **Nothing loads until you find it.** The arcade chunk is prefetched on click 3,
@@ -117,7 +117,7 @@ Without it, a failed chunk simply propagates to the nearest error boundary.
 ```bash
 npm install
 npm run dev        # standalone playground on :5180 — a fake header, one logo
-npm test           # 116 unit tests, no browser needed
+npm test           # 148 unit tests, no browser needed
 npm run build      # dist/ — ES modules, one file per source module
 npm run typecheck
 ```
@@ -160,8 +160,12 @@ src/
       engine.ts            fleet, shots, bunkers, waves
       sprites.ts           pixel bitmaps → one path each
       InvadersGame.tsx     the field + input                  ← own chunk
-tests/                     one suite per engine, plus component tests for
-                           Ladder and Space Invaders
+    pacman/
+      maze.ts              the maze, drawn, plus its landmarks
+      engine.ts            movement, ghost AI, fright, scoring
+      PacmanGame.tsx       SVG board + input                  ← own chunk
+tests/                     one suite per engine, plus component tests for the
+                           three games with a clock
 dev/                       the standalone playground
 ```
 
@@ -178,6 +182,10 @@ devices an on-screen pad appears (`@media (pointer: coarse)`).
 enough: only one shot is ever in the air. On a touch screen, drag anywhere on
 the field and the cannon follows your finger and fires by itself; the arrow pad
 is there too for anyone who prefers thumbs.
+
+**Pac-Man** — arrows or `WASD` to steer; a direction you ask for early is held
+until the corner arrives, so turns are forgiving. On touch, **swipe the maze**
+in the direction you want; a pad appears too, wherever there is height for one.
 
 ## Ladder
 
@@ -254,6 +262,57 @@ Worth knowing before editing it:
 - **Sprites are bitmaps, not paths.** `sprites.ts` holds character art you can
   edit by looking at it; `spritePath` merges each row's lit pixels into one
   `<path>` at module load, so an invader costs one DOM node rather than eighty.
+
+## Pac-Man
+
+Clear the maze, dodge four ghosts, and eat a power pellet to spend a few seconds
+being the dangerous one. Levels are endless and the ghosts speed up as they go;
+the fruit under the pen turns up twice a maze.
+
+The implementation is independent, on the same footing as Ladder: the genre and
+its mechanics are free to reuse, the original's maze, artwork and code are not,
+so the maze here is our own. The *name* is Namco's trademark, which a hidden
+easter egg is unlikely to trouble — but if this ever ships somewhere public,
+`pacmanName` in `strings.ts` is the one line to change.
+
+Worth knowing before editing it:
+
+- **The maze is drawn, not declared.** This is the deliberate opposite of
+  Ladder's geometry: a maze's whole shape *is* the design, and ranges would hide
+  it. The invariants geometry would have given for free are unit tests instead —
+  row widths, left/right symmetry, and a flood fill proving every pellet is
+  reachable from Pac-Man's start tile.
+- **The pen door is one-way by intent.** Ghosts may cross it on the way out, or
+  as eyes on the way home; nobody else may. Without that rule a ghost whose
+  target sits below the pen routes straight through it and never comes out.
+- **Ghost personality is one target tile each.** Blinky aims at Pac-Man, Pinky
+  four tiles ahead of him, Inky at Blinky's position mirrored through the tile
+  two ahead, Clyde at Pac-Man until he gets close and then at his own corner.
+  Each ghost simply steps to whichever legal neighbour is nearest its target and
+  never turns back — which is the whole of the AI, and enough for four
+  distinguishable hunters.
+- **Ties break up, left, down, right.** Two equally short routes are not a coin
+  flip; the fixed order is what makes the ghosts feel like they have habits.
+- **Frightened movement is a hash, not `Math.random`.** A tick has to be
+  replayable for the tests, so the wobble is an integer hash of the tick and the
+  ghost.
+- **Ticks are cells, frames are pixels — the same split as Ladder.** React owns
+  which sprites exist and turns them; the frame loop owns the `transform` on
+  anything carrying `data-entity`. A tunnel crossing is the one jump the loop
+  must *not* interpolate, or the sprite skates back across the whole maze.
+- **A tick is 140 ms, and every other timing is counted in ticks.** That is a
+  little over seven tiles a second — quick enough to feel like an arcade, slow
+  enough that a corner can still be answered. Fright, the fruit, the pen
+  releases and the scatter/chase schedule are all sized against that number, so
+  changing it rescales the whole game and those constants need scaling back.
+- **Touch gets swipe first, the pad second.** A maze wants a direction, not a
+  button, so a swipe anywhere on the board steers and the origin resets after
+  each turn — a thumb can stay down and keep steering. The board is
+  `touch-none`, or the same drag would scroll the arcade behind it.
+- **A landscape phone rearranges rather than shrinks.** Stacked above a board,
+  the readouts and a pad leave a maze barely 140 px tall. Under
+  `(max-height: 560px)` the pad gives way to swiping and the readouts move into
+  a column beside the board, which buys back roughly half the height.
 
 ## Design notes
 

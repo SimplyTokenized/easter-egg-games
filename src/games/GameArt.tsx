@@ -371,10 +371,54 @@ const InvadersArt = () => {
   );
 };
 
+/**
+ * Pac-Man's cover is a slice of the maze itself: outlined corridors, a dotted
+ * run, and a ghost about to spoil it. Kept in the middle so the phone
+ * thumbnail, which crops the 4:3 art to roughly a square, does not clip it.
+ */
+const PacmanArt = () => {
+  const dots = [50, 66, 82, 98, 114, 130];
+  return (
+    <Frame>
+      <rect width="200" height="150" fill="#05060f" />
+      {/* Corridor walls, drawn as outlines the way the game draws them. */}
+      <g fill="none" stroke="#3b82f6" strokeWidth="3" strokeLinecap="round">
+        <rect x="20" y="20" width="160" height="110" rx="10" />
+        <rect x="38" y="38" width="46" height="26" rx="6" />
+        <rect x="116" y="38" width="46" height="26" rx="6" />
+        <rect x="38" y="96" width="46" height="20" rx="6" />
+        <rect x="116" y="96" width="46" height="20" rx="6" />
+      </g>
+      {dots.map((x) => (
+        <circle key={x} cx={x} cy="80" r="2.6" fill="#fde68a" />
+      ))}
+      <circle cx="34" cy="80" r="6" fill="#fbbf24" />
+
+      {/* Pac-Man, mouth open on the run. */}
+      <g transform="translate(150 80)">
+        <path d="M0 0L13.4 -11.2A17.5 17.5 0 1 0 13.4 11.2Z" fill="#fde047" />
+      </g>
+
+      {/* Blinky, one corridor behind. */}
+      <g transform="translate(100 80)">
+        <path
+          d="M-13 13V-1A13 13 0 0 1 13 -1V13L8.7 9.4L4.3 13L0 9.4L-4.3 13L-8.7 9.4Z"
+          fill="#ef4444"
+        />
+        <ellipse cx="-5" cy="-2.5" rx="4" ry="5" fill="#f8fafc" />
+        <ellipse cx="5" cy="-2.5" rx="4" ry="5" fill="#f8fafc" />
+        <circle cx="-3" cy="-2.5" r="2.2" fill="#1e3a8a" />
+        <circle cx="7" cy="-2.5" r="2.2" fill="#1e3a8a" />
+      </g>
+    </Frame>
+  );
+};
+
 const ART: Record<string, () => ReactElement> = {
   solitaire: SolitaireArt,
   ladder: LadderArt,
   invaders: InvadersArt,
+  pacman: PacmanArt,
   snake: SnakeArt,
   memory: MemoryArt,
   "2048": PuzzleArt,
