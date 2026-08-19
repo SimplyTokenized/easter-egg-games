@@ -46,6 +46,13 @@ export const GAMES: GameDefinition[] = [
     component: lazyWithRetry(() => import("./invaders/InvadersGame")),
   },
   {
+    id: "pacman",
+    nameKey: "pacmanName",
+    descriptionKey: "pacmanDescription",
+    accent: "from-yellow-300 to-amber-500",
+    component: lazyWithRetry(() => import("./pacman/PacmanGame")),
+  },
+  {
     id: "snake",
     nameKey: "snakeName",
     descriptionKey: "snakeDescription",
